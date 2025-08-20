@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class URLFetcher {
-    public static Set<String> fetchLinks(String url){
+    public Set<String> fetchLinks(String url){
         Set<String> links=new HashSet<>();
         Document document=null;
         try {
@@ -18,14 +18,14 @@ public class URLFetcher {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.print(document.text());
+        System.out.println(document.text());
 
         Elements anchorTags=document.select("a[href]");
         for(Element link : anchorTags){
             String extractedUrl=link.absUrl("href");
             if(!extractedUrl.isEmpty()){
                 links.add(extractedUrl);
-                System.out.print(links);
+                System.out.println(links);
             }
         }
         return links;

@@ -28,14 +28,14 @@ public class CrawlerTask implements Runnable {
             }
             Set<String> links=urlFetcher.fetchLinks(url);
             for(String link : links){
-                if(urlStore.addURL(url)){
+                if(urlStore.addURL(link)){
                     phaser.register();
                     WebCrawler.submitTask(urlStore, urlFetcher, currentDepth+1,maxDepth);
                 }
             }
 
         } catch (Exception e) {
-            System.out.println("Error occ");
+            System.out.println(e);
         }finally{
             phaser.arriveAndDeregister();
         }
