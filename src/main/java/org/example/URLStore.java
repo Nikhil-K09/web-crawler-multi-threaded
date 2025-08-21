@@ -8,7 +8,7 @@ public class URLStore {
     private final ConcurrentHashMap<String,Boolean> visitedURL=new ConcurrentHashMap<>();
     private final BlockingQueue<String> urlQueue=new LinkedBlockingQueue<>();
 
-    public boolean addURL(String url) {
+    public boolean addUrl(String url) {
         if(visitedURL.putIfAbsent(url,true)==null){
             urlQueue.offer(url);
             return true;

@@ -28,7 +28,7 @@ public class CrawlerTask implements Runnable {
             }
             Set<String> links=urlFetcher.fetchLinks(url);
             for(String link : links){
-                if(urlStore.addURL(link)){
+                if(urlStore.addUrl(link)){
                     phaser.register();
                     WebCrawler.submitTask(urlStore, urlFetcher, currentDepth+1,maxDepth);
                 }
