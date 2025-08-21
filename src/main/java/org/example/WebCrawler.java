@@ -1,6 +1,5 @@
 package org.example;
 
-import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Phaser;
@@ -25,7 +24,7 @@ public class WebCrawler {
         phaser.awaitAdvance(phaser.getPhase());
 
         executorService.shutdown();
-        System.out.println("Time taken " + (System.currentTimeMillis()-start));
+        System.out.println("Time taken " + (System.currentTimeMillis()-start)+" ms");
     }
 
     public static void submitTask(URLStore urlStore, URLFetcher urlFetcher, int currentDepth, int maxDepth) {
